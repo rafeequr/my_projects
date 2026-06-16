@@ -41,4 +41,3 @@ jobs:
         run: |
           cd gcp-etl-template/terraform
           terraform apply -auto-approve
-``
