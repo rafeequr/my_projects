@@ -5,40 +5,40 @@ on:
     branches:
       - main
 
+# ✅ ADD THIS BLOCK (CRITICAL FIX)
+permissions:
+  id-token: write   # REQUIRED for WIF
+  contents: read
+
 jobs:
   terraform:
     runs-on: ubuntu-latest
 
     steps:
-      # ✅ Step 1: Checkout repo
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      # ✅ Step 2: Authenticate to GCP (THIS IS YOUR STEP)
       - name: Authenticate to GCP
         uses: google-github-actions/auth@v1
         with:
           workload_identity_provider: "projects/345641983266/locations/global/workloadIdentityPools/github-pool/providers/github-provider"
           service_account: "terraform-sa@project-24a83cf8-3efa-4d50-afd.iam.gserviceaccount.com"
 
-      # ✅ Step 3: Setup Terraform
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
 
-      # ✅ Step 4: Terraform Init
       - name: Terraform Init
         run: |
           cd gcp-etl-template/terraform
           terraform init
 
-      # ✅ Step 5: Terraform Plan
       - name: Terraform Plan
         run: |
           cd gcp-etl-template/terraform
           terraform plan
 
-      # ✅ Step 6: Terraform Apply
       - name: Terraform Apply
         run: |
           cd gcp-etl-template/terraform
           terraform apply -auto-approve
+``
