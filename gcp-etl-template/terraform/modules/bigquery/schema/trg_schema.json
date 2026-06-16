@@ -1,0 +1,67 @@
+[
+    {
+      "name": "order_id",
+      "type": "STRING",
+      "mode": "REQUIRED"
+    },
+    {
+      "name": "customer_id",
+      "type": "STRING"
+    },
+    {
+      "name": "customer_name",
+      "type": "STRING"
+    },
+    {
+      "name": "product",
+      "type": "STRING"
+    },
+    {
+      "name": "category",
+      "type": "STRING"
+    },
+    {
+      "name": "price",
+      "type": "FLOAT"
+    },
+    {
+      "name": "quantity",
+      "type": "INTEGER"
+    },
+    {
+      "name": "total_amount",
+      "type": "FLOAT"
+    },
+    {
+      "name": "order_date",
+      "type": "DATE"
+    },
+    {
+      "name": "city",
+      "type": "STRING"
+    },
+    {
+      "name": "payment_method",
+      "type": "STRING"
+    },
+    {
+      "name": "discount",
+      "type": "FLOAT"
+    },
+    {
+      "name": "gst",
+      "type": "FLOAT"
+    },
+    {
+      "name": "shipping_cost",
+      "type": "FLOAT"
+    },
+    {
+      "name": "net_amount",
+      "type": "FLOAT"
+    },
+    {
+      "name": "load_timestamp",
+      "type": "TIMESTAMP"
+    }
+  ]

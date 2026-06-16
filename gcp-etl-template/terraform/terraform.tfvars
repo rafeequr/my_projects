@@ -1,0 +1,5 @@
+project_id  = "project-24a83cf8-3efa-4d50-afd"
+region      = "asia-south1"
+dataset_id  = "purchase_etl_dataset"
+location    = "asia-south1"
+environment = "dev"

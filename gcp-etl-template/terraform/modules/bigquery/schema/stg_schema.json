@@ -1,0 +1,18 @@
+[
+    {"name": "order_id", "type": "STRING"},
+    {"name": "customer_id", "type": "STRING"},
+    {"name": "customer_name", "type": "STRING"},
+    {"name": "product", "type": "STRING"},
+    {"name": "category", "type": "STRING"},
+    {"name": "price", "type": "STRING"},
+    {"name": "quantity", "type": "STRING"},
+    {"name": "total_amount", "type": "STRING"},
+    {"name": "order_date", "type": "STRING"},
+    {"name": "city", "type": "STRING"},
+    {"name": "payment_method", "type": "STRING"},
+    {"name": "discount", "type": "STRING"},
+    {"name": "gst", "type": "STRING"},
+    {"name": "shipping_cost", "type": "STRING"},
+    {"name": "ingestion_timestamp", "type": "TIMESTAMP"}
+  ]
+  
