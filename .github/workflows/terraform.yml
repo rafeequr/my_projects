@@ -1,0 +1,37 @@
+name: Terraform GCP Infra
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+
+      - name: Authenticate to GCP
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Terraform Init
+        run: |
+          cd gcp-etl-template/terraform
+          terraform init
+
+      - name: Terraform Plan
+        run: |
+          cd gcp-etl-template/terraform
+          terraform plan
+
+      - name: Terraform Apply
+        run: |
+          cd gcp-etl-template/terraform
+          terraform apply -auto-approve
