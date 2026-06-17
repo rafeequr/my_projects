@@ -1,0 +1,42 @@
+name: Deploy Cloud Function
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Authenticate to GCP
+        uses: google-github-actions/auth@v1
+        with:
+          workload_identity_provider: "projects/345641983266/locations/global/workloadIdentityPools/github-pool/providers/github-provider"
+          service_account: "terraform-sa@project-24a83cf8-3efa-4d50-afd.iam.gserviceaccount.com"
+
+      # ✅ Copy SQL into function folder
+      - name: Copy SQL
+        run: |
+          cp gcp-etl-template/sql/transformations.sql \
+             gcp-etl-template/functions/gcs-etl/
+
+      - name: Deploy Function
+        run: |
+          gcloud functions deploy gcs-etl-function \
+            --gen2 \
+            --runtime=python310 \
+            --region=asia-south1 \
+            --source=gcp-etl-template/functions/gcs-etl \
+            --entry-point=gcs_to_bq_etl \
+            --trigger-bucket=source_bucket_16012026 \
+            --memory=512MB \
+            --timeout=540s \
+            --quiet
