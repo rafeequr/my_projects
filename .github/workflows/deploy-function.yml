@@ -33,10 +33,11 @@ jobs:
           gcloud functions deploy gcs-etl-function \
             --gen2 \
             --runtime=python310 \
-            --region=asia-south1 \
+            --region=us \
             --source=gcp-etl-template/functions/gcs-etl \
             --entry-point=gcs_to_bq_etl \
             --trigger-bucket=source_bucket_16012026 \
             --memory=512MB \
             --timeout=540s \
             --quiet
+
